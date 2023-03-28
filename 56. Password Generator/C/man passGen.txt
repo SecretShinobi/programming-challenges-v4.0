@@ -1,0 +1,59 @@
+.TH PASSGEN 1 2023-03-27 GNU passGenMan 
+
+NAME
+	passgen - print out a password
+	
+SYNOPSIS
+	passgen NUM [OPTION...] 
+
+DESCRIPTION
+	passgen creates a NUM long password string. By default, passgen 
+	creates a string of NUM random lowercase characters. Including 
+	tokens specified in OPTIONS will affect what characters can 
+	appear in the string
+	
+	The ordering of the tokens do not matter, so as long as they are
+	in OPTIONS, they are valid modifiers for the program
+	
+OPTIONS
+	-n
+		Include numbers 0-9 in the password string
+	-u
+		Include uppercase characters in the password string
+	-s
+		Include special characters in the password string
+
+EXIT STATUS
+	On successfully generating and printing the password string to 
+	stdout, return 0. Otherwise, return 1
+
+NOTES
+	This is currently a barebones basic implementation of a password 
+	generator and is meant to print a password to stdout. There will
+	be an option to print the password to a specified file
+	
+	Additional exit status/return codes will be implemented to the 
+	program as they arise
+
+EXAMPLES
+       	Generate a simple lowercase password of length 10
+    	
+    	    $ passgen 10
+    	    
+    	This will print a string with 10 lowercase letters to stdout, like
+    	'nkleqwoasd' or 'efnlkpoija'
+    	
+    	
+    	Generate an alphanumeric password with length 7
+    	
+    	    $ passgen 7 -n -u
+    	
+    	This would print a string with 7 alphanumeric characters to stdout
+    	like 'asFWjnmk32' or '3FSw03mma5'. 
+    	
+    	Generating a password of length 12 with all options enabled
+    	
+    	    $ passgen 12 -u -n -s
+    	    
+    	This would print a string with 12 random characters to stdout, like
+    	'23fQWE@!q4' or 'fwF@r423!a'
