@@ -1,3 +1,23 @@
 ## Overview
 
-This implementation is a command-line program that 
+This implementation is a command-line program that generates a password
+
+## Notes
+Due to how C deals with strings and characters, we can create a random 
+password by generating random numbers within 32-127, as these are the 
+codes for the ASCII printable characters
+- Codes 48-57 are the numbers 0-9
+- Codes 65-90 are the uppercase characters
+- Codes 97-122 are the lowercase characters
+- The other codes (excluding 32 and 127) are the special characters
+
+I tried writing this code following the UNIX philosophy by making the
+code modular, specialized and able to handle text streams. The main 
+challenge for me is figuring out what pieces of code I should make as 
+functions to put in the custom header library
+
+## Method
+One way of implementing this is to generate a random number and 
+get a random ASCII code based on the specified options. Then add
+this character to the password and repeat until the string length is 
+equal to the specified number. Print the string to stdout once done
